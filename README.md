@@ -1,10 +1,31 @@
 # OrderSystem
+    ## Front-end
+    -   Manage
+        * Edit (all order types editable here)
 
-## DataBase
-dbArtikels:
-- ArtName
-- ArtDetail
-- ArtCode
-- Category
-- Price
-- Stock
+    -   Order
+        * Broodjes
+        ... * Frituur
+        ... * Pokebowl
+
+    -   Overview
+        * Db
+        * Orders
+
+    ## Back-end
+    - Class order
+        * name person
+        * type order
+            * items
+
+# Database
+    -   dbBroodjes
+
+    -   dbFrituur
+
+    -   dbPokebowl
+
+    -   dbOrders
+        -   broodjes
+        -   frituur
+        -   pokebowl
