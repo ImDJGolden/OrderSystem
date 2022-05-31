@@ -16,5 +16,24 @@ namespace OrderSystem
         {
             InitializeComponent();
         }
+
+        #region Functions
+        void LaunchScreen(Form frm)
+        {
+            this.gboMenu.Visible = false;
+            Application.DoEvents();
+            frm.MdiParent = this;
+            frm.FormClosed += new FormClosedEventHandler(ShowMenu);
+            frm.Show();
+        }
+
+        void ShowMenu(object sender, EventArgs e)
+        {
+            if (this.MdiChildren.Length <= 1)
+            {
+                this.gboMenu.Visible = true;
+            }
+        }
+        #endregion
     }
 }
