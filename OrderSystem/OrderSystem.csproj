@@ -79,5 +79,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DBControl\DBControl.csproj">
+      <Project>{655c3a95-2605-4ebc-aaf4-b2528c73260b}</Project>
+      <Name>DBControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Manage\Manage.csproj">
+      <Project>{cef44a4b-5f30-422d-8ac6-7b05112b3f7e}</Project>
+      <Name>Manage</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

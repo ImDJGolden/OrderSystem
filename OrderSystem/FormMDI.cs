@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Manage;
 
 namespace OrderSystem
 {
@@ -33,6 +34,26 @@ namespace OrderSystem
             {
                 this.gboMenu.Visible = true;
             }
+        }
+        #endregion
+
+        #region Link clicked
+        private void lnkManage_Assortiment_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Assortiment();
+        }
+
+        private void assortimentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Assortiment();
+        }
+        #endregion
+
+        #region Redirect Form
+        private void Assortiment()
+        {
+            FormManageAssortiment frm = FormManageAssortiment.GetInstance();
+            this.LaunchScreen(frm);
         }
         #endregion
     }
