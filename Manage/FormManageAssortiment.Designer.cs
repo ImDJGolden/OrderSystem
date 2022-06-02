@@ -53,17 +53,19 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvAssortiment = new System.Windows.Forms.DataGridView();
             this.txtSearchAssortiment = new System.Windows.Forms.TextBox();
+            this.btnAddCategory = new System.Windows.Forms.Button();
             this.pnlCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssortiment)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlCategory
             // 
+            this.pnlCategory.Controls.Add(this.btnAddCategory);
             this.pnlCategory.Controls.Add(this.lblCategory);
             this.pnlCategory.Controls.Add(this.cboCategory);
             this.pnlCategory.Location = new System.Drawing.Point(13, 13);
             this.pnlCategory.Name = "pnlCategory";
-            this.pnlCategory.Size = new System.Drawing.Size(217, 38);
+            this.pnlCategory.Size = new System.Drawing.Size(298, 31);
             this.pnlCategory.TabIndex = 0;
             // 
             // lblCategory
@@ -142,6 +144,15 @@
             this.txtSearchAssortiment.Size = new System.Drawing.Size(167, 20);
             this.txtSearchAssortiment.TabIndex = 5;
             // 
+            // btnAddCategory
+            // 
+            this.btnAddCategory.Location = new System.Drawing.Point(220, 2);
+            this.btnAddCategory.Name = "btnAddCategory";
+            this.btnAddCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCategory.TabIndex = 2;
+            this.btnAddCategory.Text = "+ Category";
+            this.btnAddCategory.UseVisualStyleBackColor = true;
+            // 
             // FormManageAssortiment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -177,6 +188,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DataGridView dgvAssortiment;
         private System.Windows.Forms.TextBox txtSearchAssortiment;
+        private System.Windows.Forms.Button btnAddCategory;
     }
 }
 
