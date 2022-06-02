@@ -31,9 +31,6 @@
             this.gboMenu = new System.Windows.Forms.GroupBox();
             this.lblMenuTitle = new System.Windows.Forms.Label();
             this.gboOrder = new System.Windows.Forms.GroupBox();
-            this.lnkOrder_Pokebowl = new System.Windows.Forms.LinkLabel();
-            this.lnkOrder_Frituur = new System.Windows.Forms.LinkLabel();
-            this.lnkOrder_Broodjes = new System.Windows.Forms.LinkLabel();
             this.gboManage = new System.Windows.Forms.GroupBox();
             this.lnkManage_Assortiment = new System.Windows.Forms.LinkLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -42,7 +39,6 @@
             this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.broodjesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gboMenu.SuspendLayout();
-            this.gboOrder.SuspendLayout();
             this.gboManage.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -73,9 +69,6 @@
             // 
             // gboOrder
             // 
-            this.gboOrder.Controls.Add(this.lnkOrder_Pokebowl);
-            this.gboOrder.Controls.Add(this.lnkOrder_Frituur);
-            this.gboOrder.Controls.Add(this.lnkOrder_Broodjes);
             this.gboOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gboOrder.ForeColor = System.Drawing.Color.Orange;
             this.gboOrder.Location = new System.Drawing.Point(6, 157);
@@ -84,48 +77,6 @@
             this.gboOrder.TabIndex = 1;
             this.gboOrder.TabStop = false;
             this.gboOrder.Text = "Order";
-            // 
-            // lnkOrder_Pokebowl
-            // 
-            this.lnkOrder_Pokebowl.ActiveLinkColor = System.Drawing.Color.YellowGreen;
-            this.lnkOrder_Pokebowl.AutoSize = true;
-            this.lnkOrder_Pokebowl.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkOrder_Pokebowl.LinkColor = System.Drawing.Color.YellowGreen;
-            this.lnkOrder_Pokebowl.Location = new System.Drawing.Point(6, 70);
-            this.lnkOrder_Pokebowl.Name = "lnkOrder_Pokebowl";
-            this.lnkOrder_Pokebowl.Size = new System.Drawing.Size(91, 16);
-            this.lnkOrder_Pokebowl.TabIndex = 2;
-            this.lnkOrder_Pokebowl.TabStop = true;
-            this.lnkOrder_Pokebowl.Text = "3. Pokebowl";
-            this.lnkOrder_Pokebowl.VisitedLinkColor = System.Drawing.Color.GreenYellow;
-            // 
-            // lnkOrder_Frituur
-            // 
-            this.lnkOrder_Frituur.ActiveLinkColor = System.Drawing.Color.YellowGreen;
-            this.lnkOrder_Frituur.AutoSize = true;
-            this.lnkOrder_Frituur.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkOrder_Frituur.LinkColor = System.Drawing.Color.YellowGreen;
-            this.lnkOrder_Frituur.Location = new System.Drawing.Point(6, 49);
-            this.lnkOrder_Frituur.Name = "lnkOrder_Frituur";
-            this.lnkOrder_Frituur.Size = new System.Drawing.Size(66, 16);
-            this.lnkOrder_Frituur.TabIndex = 1;
-            this.lnkOrder_Frituur.TabStop = true;
-            this.lnkOrder_Frituur.Text = "2. Frituur";
-            this.lnkOrder_Frituur.VisitedLinkColor = System.Drawing.Color.GreenYellow;
-            // 
-            // lnkOrder_Broodjes
-            // 
-            this.lnkOrder_Broodjes.ActiveLinkColor = System.Drawing.Color.YellowGreen;
-            this.lnkOrder_Broodjes.AutoSize = true;
-            this.lnkOrder_Broodjes.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkOrder_Broodjes.LinkColor = System.Drawing.Color.YellowGreen;
-            this.lnkOrder_Broodjes.Location = new System.Drawing.Point(6, 28);
-            this.lnkOrder_Broodjes.Name = "lnkOrder_Broodjes";
-            this.lnkOrder_Broodjes.Size = new System.Drawing.Size(86, 16);
-            this.lnkOrder_Broodjes.TabIndex = 0;
-            this.lnkOrder_Broodjes.TabStop = true;
-            this.lnkOrder_Broodjes.Text = "1. Broodjes";
-            this.lnkOrder_Broodjes.VisitedLinkColor = System.Drawing.Color.GreenYellow;
             // 
             // gboManage
             // 
@@ -176,7 +127,7 @@
             // assortimentToolStripMenuItem
             // 
             this.assortimentToolStripMenuItem.Name = "assortimentToolStripMenuItem";
-            this.assortimentToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.assortimentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.assortimentToolStripMenuItem.Text = "Assortiment";
             this.assortimentToolStripMenuItem.Click += new System.EventHandler(this.assortimentToolStripMenuItem_Click);
             // 
@@ -209,8 +160,6 @@
             this.Text = "Order System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.gboMenu.ResumeLayout(false);
-            this.gboOrder.ResumeLayout(false);
-            this.gboOrder.PerformLayout();
             this.gboManage.ResumeLayout(false);
             this.gboManage.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -229,10 +178,7 @@
         private System.Windows.Forms.ToolStripMenuItem broodjesToolStripMenuItem;
         private System.Windows.Forms.GroupBox gboOrder;
         private System.Windows.Forms.GroupBox gboManage;
-        private System.Windows.Forms.LinkLabel lnkOrder_Broodjes;
         private System.Windows.Forms.Label lblMenuTitle;
-        private System.Windows.Forms.LinkLabel lnkOrder_Pokebowl;
-        private System.Windows.Forms.LinkLabel lnkOrder_Frituur;
         private System.Windows.Forms.LinkLabel lnkManage_Assortiment;
         private System.Windows.Forms.ToolStripMenuItem assortimentToolStripMenuItem;
     }

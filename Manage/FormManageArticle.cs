@@ -16,5 +16,19 @@ namespace Manage
         {
             InitializeComponent();
         }
+
+        #region Functions
+        public void SetArticle(DataRow row)
+        {
+            string artNr = row[""].ToString();
+            string artDesc = row[""].ToString();
+            double price = Convert.ToDouble(row[""]);
+
+            this.txtArticleNr.Text = artNr;
+            this.txtArticleDesc.Text = artDesc;
+            this.cboCategory.Text = row[""].ToString();
+            this.txtPrice.Text = price.ToString();
+        }
+        #endregion
     }
 }

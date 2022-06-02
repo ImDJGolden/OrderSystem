@@ -45,6 +45,7 @@
         private void InitializeComponent()
         {
             this.pnlCategory = new System.Windows.Forms.Panel();
+            this.btnAddCategory = new System.Windows.Forms.Button();
             this.lblCategory = new System.Windows.Forms.Label();
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.btnClose = new System.Windows.Forms.Button();
@@ -53,7 +54,6 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvAssortiment = new System.Windows.Forms.DataGridView();
             this.txtSearchAssortiment = new System.Windows.Forms.TextBox();
-            this.btnAddCategory = new System.Windows.Forms.Button();
             this.pnlCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssortiment)).BeginInit();
             this.SuspendLayout();
@@ -67,6 +67,16 @@
             this.pnlCategory.Name = "pnlCategory";
             this.pnlCategory.Size = new System.Drawing.Size(298, 31);
             this.pnlCategory.TabIndex = 0;
+            // 
+            // btnAddCategory
+            // 
+            this.btnAddCategory.Location = new System.Drawing.Point(220, 2);
+            this.btnAddCategory.Name = "btnAddCategory";
+            this.btnAddCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCategory.TabIndex = 2;
+            this.btnAddCategory.Text = "+ Category";
+            this.btnAddCategory.UseVisualStyleBackColor = true;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
             // lblCategory
             // 
@@ -95,6 +105,7 @@
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnDelete
             // 
@@ -115,6 +126,7 @@
             this.btnEdit.TabIndex = 8;
             this.btnEdit.Text = "Edit item";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -125,6 +137,7 @@
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "Add item";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dgvAssortiment
             // 
@@ -143,15 +156,6 @@
             this.txtSearchAssortiment.Name = "txtSearchAssortiment";
             this.txtSearchAssortiment.Size = new System.Drawing.Size(167, 20);
             this.txtSearchAssortiment.TabIndex = 5;
-            // 
-            // btnAddCategory
-            // 
-            this.btnAddCategory.Location = new System.Drawing.Point(220, 2);
-            this.btnAddCategory.Name = "btnAddCategory";
-            this.btnAddCategory.Size = new System.Drawing.Size(75, 23);
-            this.btnAddCategory.TabIndex = 2;
-            this.btnAddCategory.Text = "+ Category";
-            this.btnAddCategory.UseVisualStyleBackColor = true;
             // 
             // FormManageAssortiment
             // 
