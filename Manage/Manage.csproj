@@ -52,6 +52,12 @@
     <Compile Include="FormManageAddCategory.Designer.cs">
       <DependentUpon>FormManageAddCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormManageArticle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManageArticle.Designer.cs">
+      <DependentUpon>FormManageArticle.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormManageAssortiment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormManageAddCategory.resx">
       <DependentUpon>FormManageAddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormManageArticle.resx">
+      <DependentUpon>FormManageArticle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormManageAssortiment.resx">
       <DependentUpon>FormManageAssortiment.cs</DependentUpon>
