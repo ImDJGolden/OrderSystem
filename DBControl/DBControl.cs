@@ -10,7 +10,7 @@ namespace DBControl
 {
     public class DBControl
     {
-        public static string mCS = "";
+        public static string mCS = System.Configuration.ConfigurationManager.ConnectionStrings["dbOrderSystem"].ConnectionString;
 
         public OleDbConnection OpenConnection()
         {
@@ -40,7 +40,7 @@ namespace DBControl
             return true;
         }
 
-        public static DataTable GetDataTable(string sql)
+        public DataTable GetDataTable(string sql)
         {
             OleDbConnection cnn = new OleDbConnection(mCS);
             OleDbCommand cmd = new OleDbCommand(sql, cnn);
