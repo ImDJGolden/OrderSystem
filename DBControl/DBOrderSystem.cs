@@ -12,10 +12,10 @@ namespace DBControl
         DBControl dbc = new DBControl();
 
         #region ManageArticle
-        public DataTable GetArticleNumbers()
+        public DataTable GetAllArticleNumbers()
         {
             DataTable dt = new DataTable();
-            string sql = "";
+            string sql = "SELECT asstArticleNumber FROM Assortiment;";
 
             try
             {
@@ -32,7 +32,7 @@ namespace DBControl
         public bool AddArticle(string artNr, string artDesc, string category)
         {
             string sql = $"INSERT INTO Assortiment (asstArticleNumber, asstArticleDescription, asstCategory) " +
-                         $"VALUES ('{artNr}', '{artDesc}', '{category}');";
+                         $"VALUES ( '{artNr}', '{artDesc}', '{category}' );";
 
             try
             {
@@ -81,6 +81,46 @@ namespace DBControl
                     return true;
                 }
                 else { return false; } 
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        #endregion
+
+
+        #region Category
+        public DataTable GetAllCategories()
+        {
+            DataTable dt = new DataTable();
+            string sql = $"SELECT spCategory " +
+                         $"FROM SystemParameters;";
+
+            try
+            {
+                dt = dbc.GetDataTable(sql);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return dt;
+        }
+
+        public bool AddCategory(string category)
+        {
+            string sql = $"INSERT INTO SystemParameters (spCategory) " +
+                         $"VALUES ( '{category}' );";
+
+            try
+            {
+                if (dbc.UpdateDatabase(sql))
+                {
+                    return true;
+                }
+                else { return false; }
             }
             catch (Exception)
             {

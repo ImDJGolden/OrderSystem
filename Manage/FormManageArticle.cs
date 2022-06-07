@@ -46,6 +46,8 @@ namespace Manage
 
                 if (result == DialogResult.Yes)
                 {
+                    DataTable dt = new DataTable();
+                    bool artNrExists = false;
                     string prevArtNr = artNr;
 
                     artNr = txtArticleNr.Text;
@@ -55,30 +57,44 @@ namespace Manage
 
                     try
                     {
-                        if (edit)
+                        dt = dbo.GetAllArticleNumbers();
+
+                        foreach (DataRow row in dt.Rows)
                         {
-                            //EDIT db record
-                            if (dbo.UpdateArticle(prevArtNr, artNr, artDesc, category, price))
+                            if (row["asstArticleNumber"].ToString() == artNr)
                             {
-                                MessageBox.Show($"Article '{artNr}' has been succesfully updated.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                edit = false;
+                                artNrExists = true;
                             }
-                            else { MessageBox.Show($"An Error has occurd while updating Article '{artNr}'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                         }
-                        else
+
+
+                        if (!artNrExists)
                         {
-                            //INSERT new db record
-                            if (dbo.AddArticle(artNr, artDesc, category))
+                            if (edit)
                             {
-                                if (dbo.UpdateArticle(artNr, price))
+                                //EDIT db record
+                                if (dbo.UpdateArticle(prevArtNr, artNr, artDesc, category, price))
                                 {
-                                    MessageBox.Show($"Article '{artNr}' has been succesfully added.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show($"Article: '{artNr}' has been succesfully updated.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    edit = false;
+                                }
+                                else { MessageBox.Show($"An Error has occurd while updating Article '{artNr}'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                            }
+                            else
+                            {
+                                //INSERT new db record
+                                if (dbo.AddArticle(artNr, artDesc, category))
+                                {
+                                    if (dbo.UpdateArticle(artNr, price))
+                                    {
+                                        MessageBox.Show($"Article: '{artNr}' has been succesfully added.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    else { MessageBox.Show($"An Error has occurd while adding Article '{artNr}'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                                 }
                                 else { MessageBox.Show($"An Error has occurd while adding Article '{artNr}'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                             }
-                            else { MessageBox.Show($"An Error has occurd while adding Article '{artNr}'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                         }
-
+                        else { MessageBox.Show($"Article number: '{artNr}' already exists. Try another one.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
                     }
                     catch (Exception ex)
                     {

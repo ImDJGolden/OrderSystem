@@ -54,7 +54,7 @@
             // 
             this.txtCategory.Location = new System.Drawing.Point(115, 12);
             this.txtCategory.Name = "txtCategory";
-            this.txtCategory.Size = new System.Drawing.Size(160, 20);
+            this.txtCategory.Size = new System.Drawing.Size(201, 20);
             this.txtCategory.TabIndex = 0;
             // 
             // lblCategory
@@ -69,12 +69,13 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(200, 38);
+            this.btnSave.Location = new System.Drawing.Point(241, 38);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnClose
             // 
@@ -84,6 +85,7 @@
             this.btnClose.TabIndex = 3;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // FormManageAddCategory
             // 
