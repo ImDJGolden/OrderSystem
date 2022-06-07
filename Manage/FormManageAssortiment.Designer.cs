@@ -54,6 +54,8 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvAssortiment = new System.Windows.Forms.DataGridView();
             this.txtSearchAssortiment = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.pnlCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssortiment)).BeginInit();
             this.SuspendLayout();
@@ -91,6 +93,8 @@
             // cboCategory
             // 
             this.cboCategory.FormattingEnabled = true;
+            this.cboCategory.Items.AddRange(new object[] {
+            "All categories"});
             this.cboCategory.Location = new System.Drawing.Point(77, 3);
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(137, 21);
@@ -152,16 +156,37 @@
             // 
             // txtSearchAssortiment
             // 
-            this.txtSearchAssortiment.Location = new System.Drawing.Point(13, 72);
+            this.txtSearchAssortiment.Location = new System.Drawing.Point(67, 72);
             this.txtSearchAssortiment.Name = "txtSearchAssortiment";
-            this.txtSearchAssortiment.Size = new System.Drawing.Size(167, 20);
+            this.txtSearchAssortiment.Size = new System.Drawing.Size(160, 20);
             this.txtSearchAssortiment.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(10, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Search:";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(233, 70);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 3;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseVisualStyleBackColor = true;
             // 
             // FormManageAssortiment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1359, 792);
+            this.Controls.Add(this.btnRefresh);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
@@ -193,6 +218,8 @@
         private System.Windows.Forms.DataGridView dgvAssortiment;
         private System.Windows.Forms.TextBox txtSearchAssortiment;
         private System.Windows.Forms.Button btnAddCategory;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }
 

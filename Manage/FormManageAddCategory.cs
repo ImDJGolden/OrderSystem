@@ -15,7 +15,7 @@ namespace Manage
     {
         DBOrderSystem dbo = new DBOrderSystem();
 
-        #region Form generated code
+        #region Form
         public FormManageAddCategory()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace Manage
 
             try
             {
-                dt = dbo.GetAllArticleNumbers();
+                dt = dbo.GetAllCategories();
 
                 foreach (DataRow row in dt.Rows)
                 {
@@ -46,10 +46,17 @@ namespace Manage
                     if (dbo.AddCategory(categoryName))
                     {
                         MessageBox.Show($"Category: '{categoryName}' has been succesfully added.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        txtCategory.Text = "";
                     }
                     else { MessageBox.Show($"An Error has occurd while adding category: '{categoryName}'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                 }
-                else { MessageBox.Show($"Category: '{categoryName}' already exists. Try another name.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                else 
+                { 
+                    MessageBox.Show($"Category: '{categoryName}' already exists. Try another name.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txtCategory.Text = "";
+                    catExists = false;
+                }
             }
             catch (Exception ex)
             {

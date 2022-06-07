@@ -25,10 +25,17 @@ namespace Manage
         bool edit = false;
         #endregion
 
-        #region Form Generated Code
+        #region Form
         public FormManageArticle()
         {
             InitializeComponent();
+        }
+
+        private void FormManageArticle_Load(object sender, EventArgs e)
+        {
+            DataTable dt = dbo.GetAllCategories();
+            cboCategory.DataSource = dt;
+            cboCategory.DisplayMember = "spCategory";
         }
         #endregion
 
@@ -52,8 +59,9 @@ namespace Manage
 
                     artNr = txtArticleNr.Text;
                     artDesc = txtArticleDesc.Text;
-                    category = cboCategory.SelectedText;
+                    category = cboCategory.Text;
                     price = txtPrice.Text;
+                    price = price.Replace('.', ',');
 
                     try
                     {

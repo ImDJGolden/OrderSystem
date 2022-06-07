@@ -29,6 +29,28 @@ namespace DBControl
             return dt;
         }
 
+        public DataTable GetArticle(string category)
+        {
+            DataTable dt = new DataTable();
+            string sql = $"SELECT * FROM Assortiment ";
+
+            if (category != "-- Default --")
+            {
+                sql += $"WHERE asstCategory = '{category}' ";
+            }
+
+            try
+            {
+                dt = dbc.GetDataTable(sql);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return dt;
+        }
+
         public bool AddArticle(string artNr, string artDesc, string category)
         {
             string sql = $"INSERT INTO Assortiment (asstArticleNumber, asstArticleDescription, asstCategory) " +
@@ -71,7 +93,7 @@ namespace DBControl
         public bool UpdateArticle(string artNr, string price)
         {
             string sql = $"UPDATE Assortiment " +
-                         $"SET asstPrice = {Convert.ToDouble(price)} " +
+                         $"SET asstPrice = '{Convert.ToDouble(price)}' " +
                          $"WHERE asstArticleNumber = '{artNr}';";
 
             try

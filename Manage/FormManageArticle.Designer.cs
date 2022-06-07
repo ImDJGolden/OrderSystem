@@ -163,6 +163,7 @@
             this.Name = "FormManageArticle";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormManageArticle";
+            this.Load += new System.EventHandler(this.FormManageArticle_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

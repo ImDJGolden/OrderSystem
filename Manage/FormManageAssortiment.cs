@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBControl;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,10 @@ namespace Manage
 {
     public partial class FormManageAssortiment : Form
     {
+        DBOrderSystem dbo = new DBOrderSystem();
+        DataTable dtGrid = new DataTable();
+
+        #region From
         public FormManageAssortiment()
         {
             InitializeComponent();
@@ -22,8 +27,13 @@ namespace Manage
         {
             this.WindowState = FormWindowState.Maximized;
 
-            //TODO: Get categories from DBAssortiment for cboCategory
+            DataTable dt = dbo.GetAllCategories();
+            cboCategory.DataSource = dt;
+            cboCategory.DisplayMember = "spCategory";
+
+            GetGrid();
         }
+        #endregion
 
         #region Buttons
         private void btnClose_Click(object sender, EventArgs e)
@@ -34,14 +44,12 @@ namespace Manage
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             FormManageAddCategory myForm = FormManageAddCategory.GetInstance();
-            myForm.TopMost = true;
             myForm.Show();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             FormManageArticle myForm = FormManageArticle.GetInstance();
-            myForm.TopMost = true;
             myForm.Show();
         }
 
@@ -51,10 +59,25 @@ namespace Manage
             //  Get DataRow from dgv.selectedrow
             FormManageArticle myForm = FormManageArticle.GetInstance();
             //myForm.SetArticle(row);
-            myForm.TopMost = true;
             myForm.Show();
         }
         #endregion
 
+        #region Functions
+        public void GetGrid()
+        {
+            string cat = cboCategory.Text;
+
+            try
+            {
+                dtGrid = dbo.GetArticle(cat);
+                dgvAssortiment.DataSource = dtGrid;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        #endregion  
     }
 }
