@@ -124,6 +124,7 @@
             this.btnDelete.TabIndex = 9;
             this.btnDelete.Text = "Delete item";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -149,6 +150,9 @@
             // 
             // dgvAssortiment
             // 
+            this.dgvAssortiment.AllowUserToAddRows = false;
+            this.dgvAssortiment.AllowUserToDeleteRows = false;
+            this.dgvAssortiment.AllowUserToOrderColumns = true;
             this.dgvAssortiment.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -223,6 +227,7 @@
             this.btnRefresh.TabIndex = 3;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // FormManageAssortiment
             // 

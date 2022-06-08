@@ -67,6 +67,17 @@ namespace Manage
         {
             dtGrid.DefaultView.RowFilter = String.Format($"asstArticleNumber LIKE '%{txtSearchAssortiment.Text}%' OR asstArticleDescription LIKE '%{txtSearchAssortiment.Text}%'");
         }
+        
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            GetGrid();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DataRowView dgvRowData = (DataRowView)dgvAssortiment.SelectedRows[0].DataBoundItem;
+            DataRow row = (DataRow)dgvRowData.Row;
+        }
         #endregion
 
         #region Functions

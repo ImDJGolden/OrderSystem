@@ -114,6 +114,26 @@ namespace DBControl
                 throw;
             }
         }
+
+        public bool DeleteArticle(string artNr)
+        {
+            string sql = $"DELETE " +
+                         $"FROM Assortiment " +
+                         $"WHERE asstArticleNumber = '{artNr}';";
+
+            try
+            {
+                if (dbc.UpdateDatabase(sql))
+                {
+                    return true;
+                }
+                else { return false; }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         #endregion
 
 
