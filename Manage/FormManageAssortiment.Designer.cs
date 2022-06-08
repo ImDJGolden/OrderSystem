@@ -56,6 +56,10 @@
             this.txtSearchAssortiment = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.ArticleNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ArticleDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssortiment)).BeginInit();
             this.SuspendLayout();
@@ -149,8 +153,15 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvAssortiment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAssortiment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ArticleNumber,
+            this.ArticleDescription,
+            this.Category,
+            this.Price});
             this.dgvAssortiment.Location = new System.Drawing.Point(13, 98);
             this.dgvAssortiment.Name = "dgvAssortiment";
+            this.dgvAssortiment.ReadOnly = true;
+            this.dgvAssortiment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAssortiment.Size = new System.Drawing.Size(1155, 682);
             this.dgvAssortiment.TabIndex = 6;
             // 
@@ -179,6 +190,34 @@
             this.btnRefresh.TabIndex = 3;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            // 
+            // ArticleNumber
+            // 
+            this.ArticleNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ArticleNumber.DataPropertyName = "asstArticleNumber";
+            this.ArticleNumber.HeaderText = "Article number";
+            this.ArticleNumber.Name = "ArticleNumber";
+            // 
+            // ArticleDescription
+            // 
+            this.ArticleDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ArticleDescription.DataPropertyName = "asstArticleDescription";
+            this.ArticleDescription.HeaderText = "Article description";
+            this.ArticleDescription.Name = "ArticleDescription";
+            // 
+            // Category
+            // 
+            this.Category.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Category.DataPropertyName = "asstCategory";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            // 
+            // Price
+            // 
+            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Price.DataPropertyName = "asstPrice";
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
             // 
             // FormManageAssortiment
             // 
@@ -220,6 +259,10 @@
         private System.Windows.Forms.Button btnAddCategory;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ArticleNumber;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ArticleDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
     }
 }
 

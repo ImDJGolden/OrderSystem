@@ -72,6 +72,11 @@ namespace Manage
                             if (row["asstArticleNumber"].ToString() == artNr)
                             {
                                 artNrExists = true;
+
+                                if (prevArtNr == artNr)
+                                {
+                                    artNrExists = false;
+                                }
                             }
                         }
 
@@ -103,6 +108,11 @@ namespace Manage
                             }
                         }
                         else { MessageBox.Show($"Article number: '{artNr}' already exists. Try another one.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+
+                        FormManageAssortiment frm = FormManageAssortiment.GetInstance();
+                        frm.GetGrid();
+
+                        this.Close();
                     }
                     catch (Exception ex)
                     {
@@ -120,10 +130,10 @@ namespace Manage
         #region Functions
         public void SetArticle(DataRow row)
         {
-            artNr = row[""].ToString();
-            artDesc = row[""].ToString();
-            category = row[""].ToString();
-            price = row[""].ToString();
+            artNr = row[0].ToString();
+            artDesc = row[1].ToString();
+            category = row[2].ToString();
+            price = row[3].ToString();
 
             this.txtArticleNr.Text = artNr;
             this.txtArticleDesc.Text = artDesc;

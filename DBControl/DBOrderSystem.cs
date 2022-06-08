@@ -72,8 +72,13 @@ namespace DBControl
 
         public bool UpdateArticle(string artNrOld, string artNrNew, string artDesc, string category, string price)
         {
+            if (category == "-- Default --")
+            {
+                category = "";
+            }
+
             string sql = $"UPDATE Assortiment " +
-                         $"SET asstArticleNumber = '{artNrNew}', asstArticleDescription = '{artDesc}', asstCategory = '{category}', asstPrice = {Convert.ToDouble(price)}" +
+                         $"SET asstArticleNumber = '{artNrNew}', asstArticleDescription = '{artDesc}', asstCategory = '{category}', asstPrice = '{Convert.ToDouble(price)}'" +
                          $"WHERE asstArticleNumber = '{artNrOld}';";
 
             try

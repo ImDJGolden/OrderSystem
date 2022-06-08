@@ -55,10 +55,11 @@ namespace Manage
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            //TODO:
-            //  Get DataRow from dgv.selectedrow
+            DataRowView dgvRowData = (DataRowView)dgvAssortiment.SelectedRows[0].DataBoundItem;
+            DataRow row = (DataRow)dgvRowData.Row;
+
             FormManageArticle myForm = FormManageArticle.GetInstance();
-            //myForm.SetArticle(row);
+            myForm.SetArticle(row);
             myForm.Show();
         }
         #endregion
