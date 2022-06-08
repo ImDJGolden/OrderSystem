@@ -31,16 +31,15 @@
             this.gboMenu = new System.Windows.Forms.GroupBox();
             this.lblMenuTitle = new System.Windows.Forms.Label();
             this.gboOrder = new System.Windows.Forms.GroupBox();
-            this.lnkOrder_Broodjes = new System.Windows.Forms.LinkLabel();
             this.gboManage = new System.Windows.Forms.GroupBox();
+            this.lnkManage_Assortiment = new System.Windows.Forms.LinkLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.assortimentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.broodjesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.gboMenu.SuspendLayout();
-            this.gboOrder.SuspendLayout();
+            this.gboManage.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,9 +69,6 @@
             // 
             // gboOrder
             // 
-            this.gboOrder.Controls.Add(this.linkLabel2);
-            this.gboOrder.Controls.Add(this.linkLabel1);
-            this.gboOrder.Controls.Add(this.lnkOrder_Broodjes);
             this.gboOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gboOrder.ForeColor = System.Drawing.Color.Orange;
             this.gboOrder.Location = new System.Drawing.Point(6, 157);
@@ -82,22 +78,9 @@
             this.gboOrder.TabStop = false;
             this.gboOrder.Text = "Order";
             // 
-            // lnkOrder_Broodjes
-            // 
-            this.lnkOrder_Broodjes.ActiveLinkColor = System.Drawing.Color.YellowGreen;
-            this.lnkOrder_Broodjes.AutoSize = true;
-            this.lnkOrder_Broodjes.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.lnkOrder_Broodjes.LinkColor = System.Drawing.Color.YellowGreen;
-            this.lnkOrder_Broodjes.Location = new System.Drawing.Point(6, 28);
-            this.lnkOrder_Broodjes.Name = "lnkOrder_Broodjes";
-            this.lnkOrder_Broodjes.Size = new System.Drawing.Size(86, 16);
-            this.lnkOrder_Broodjes.TabIndex = 0;
-            this.lnkOrder_Broodjes.TabStop = true;
-            this.lnkOrder_Broodjes.Text = "1. Broodjes";
-            this.lnkOrder_Broodjes.VisitedLinkColor = System.Drawing.Color.GreenYellow;
-            // 
             // gboManage
             // 
+            this.gboManage.Controls.Add(this.lnkManage_Assortiment);
             this.gboManage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gboManage.ForeColor = System.Drawing.Color.Orange;
             this.gboManage.Location = new System.Drawing.Point(6, 51);
@@ -106,6 +89,21 @@
             this.gboManage.TabIndex = 0;
             this.gboManage.TabStop = false;
             this.gboManage.Text = "Manage";
+            // 
+            // lnkManage_Assortiment
+            // 
+            this.lnkManage_Assortiment.ActiveLinkColor = System.Drawing.Color.YellowGreen;
+            this.lnkManage_Assortiment.AutoSize = true;
+            this.lnkManage_Assortiment.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkManage_Assortiment.LinkColor = System.Drawing.Color.YellowGreen;
+            this.lnkManage_Assortiment.Location = new System.Drawing.Point(6, 29);
+            this.lnkManage_Assortiment.Name = "lnkManage_Assortiment";
+            this.lnkManage_Assortiment.Size = new System.Drawing.Size(104, 16);
+            this.lnkManage_Assortiment.TabIndex = 3;
+            this.lnkManage_Assortiment.TabStop = true;
+            this.lnkManage_Assortiment.Text = "1. Assortiment";
+            this.lnkManage_Assortiment.VisitedLinkColor = System.Drawing.Color.GreenYellow;
+            this.lnkManage_Assortiment.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkManage_Assortiment_LinkClicked);
             // 
             // menuStrip1
             // 
@@ -120,9 +118,18 @@
             // 
             // manageToolStripMenuItem
             // 
+            this.manageToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.assortimentToolStripMenuItem});
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
             this.manageToolStripMenuItem.Size = new System.Drawing.Size(62, 20);
             this.manageToolStripMenuItem.Text = "Manage";
+            // 
+            // assortimentToolStripMenuItem
+            // 
+            this.assortimentToolStripMenuItem.Name = "assortimentToolStripMenuItem";
+            this.assortimentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.assortimentToolStripMenuItem.Text = "Assortiment";
+            this.assortimentToolStripMenuItem.Click += new System.EventHandler(this.assortimentToolStripMenuItem_Click);
             // 
             // orderToolStripMenuItem
             // 
@@ -138,34 +145,6 @@
             this.broodjesToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
             this.broodjesToolStripMenuItem.Text = "Broodjes";
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.ActiveLinkColor = System.Drawing.Color.YellowGreen;
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabel1.LinkColor = System.Drawing.Color.YellowGreen;
-            this.linkLabel1.Location = new System.Drawing.Point(6, 49);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(66, 16);
-            this.linkLabel1.TabIndex = 1;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "2. Frituur";
-            this.linkLabel1.VisitedLinkColor = System.Drawing.Color.GreenYellow;
-            // 
-            // linkLabel2
-            // 
-            this.linkLabel2.ActiveLinkColor = System.Drawing.Color.YellowGreen;
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabel2.LinkColor = System.Drawing.Color.YellowGreen;
-            this.linkLabel2.Location = new System.Drawing.Point(6, 70);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(91, 16);
-            this.linkLabel2.TabIndex = 2;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "3. Pokebowl";
-            this.linkLabel2.VisitedLinkColor = System.Drawing.Color.GreenYellow;
-            // 
             // FormMDI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -174,12 +153,15 @@
             this.ClientSize = new System.Drawing.Size(1440, 637);
             this.Controls.Add(this.gboMenu);
             this.Controls.Add(this.menuStrip1);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMDI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order System";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.gboMenu.ResumeLayout(false);
-            this.gboOrder.ResumeLayout(false);
-            this.gboOrder.PerformLayout();
+            this.gboManage.ResumeLayout(false);
+            this.gboManage.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -196,10 +178,9 @@
         private System.Windows.Forms.ToolStripMenuItem broodjesToolStripMenuItem;
         private System.Windows.Forms.GroupBox gboOrder;
         private System.Windows.Forms.GroupBox gboManage;
-        private System.Windows.Forms.LinkLabel lnkOrder_Broodjes;
         private System.Windows.Forms.Label lblMenuTitle;
-        private System.Windows.Forms.LinkLabel linkLabel2;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel lnkManage_Assortiment;
+        private System.Windows.Forms.ToolStripMenuItem assortimentToolStripMenuItem;
     }
 }
 
