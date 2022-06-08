@@ -77,6 +77,29 @@ namespace Manage
         {
             DataRowView dgvRowData = (DataRowView)dgvAssortiment.SelectedRows[0].DataBoundItem;
             DataRow row = (DataRow)dgvRowData.Row;
+
+            string artNr = row[0].ToString();
+            string artDesc = row[1].ToString();
+
+            try
+            {
+                DialogResult res = MessageBox.Show($"Are you sure you want to delete Article: '{artNr} - {artDesc}'?", "Delete Article?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (res == DialogResult.Yes)
+                {
+                    if (dbo.DeleteArticle(artNr))
+                    {
+                        MessageBox.Show($"Article: '{artNr}' has been succesfully Deleted.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else { MessageBox.Show($"An Error has occurd while Deleting Article '{artNr}'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+                    GetGrid();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         #endregion
 
