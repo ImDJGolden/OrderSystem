@@ -53,13 +53,13 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.dgvAssortiment = new System.Windows.Forms.DataGridView();
-            this.txtSearchAssortiment = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnRefresh = new System.Windows.Forms.Button();
             this.ArticleNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ArticleDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtSearchAssortiment = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.pnlCategory.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssortiment)).BeginInit();
             this.SuspendLayout();
@@ -165,12 +165,45 @@
             this.dgvAssortiment.Size = new System.Drawing.Size(1155, 682);
             this.dgvAssortiment.TabIndex = 6;
             // 
+            // ArticleNumber
+            // 
+            this.ArticleNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ArticleNumber.DataPropertyName = "asstArticleNumber";
+            this.ArticleNumber.HeaderText = "Article number";
+            this.ArticleNumber.Name = "ArticleNumber";
+            this.ArticleNumber.ReadOnly = true;
+            // 
+            // ArticleDescription
+            // 
+            this.ArticleDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ArticleDescription.DataPropertyName = "asstArticleDescription";
+            this.ArticleDescription.HeaderText = "Article description";
+            this.ArticleDescription.Name = "ArticleDescription";
+            this.ArticleDescription.ReadOnly = true;
+            // 
+            // Category
+            // 
+            this.Category.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Category.DataPropertyName = "asstCategory";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Price.DataPropertyName = "asstPrice";
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
             // txtSearchAssortiment
             // 
             this.txtSearchAssortiment.Location = new System.Drawing.Point(67, 72);
             this.txtSearchAssortiment.Name = "txtSearchAssortiment";
             this.txtSearchAssortiment.Size = new System.Drawing.Size(160, 20);
             this.txtSearchAssortiment.TabIndex = 5;
+            this.txtSearchAssortiment.TextChanged += new System.EventHandler(this.txtSearchAssortiment_TextChanged);
             // 
             // label1
             // 
@@ -190,34 +223,6 @@
             this.btnRefresh.TabIndex = 3;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.UseVisualStyleBackColor = true;
-            // 
-            // ArticleNumber
-            // 
-            this.ArticleNumber.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ArticleNumber.DataPropertyName = "asstArticleNumber";
-            this.ArticleNumber.HeaderText = "Article number";
-            this.ArticleNumber.Name = "ArticleNumber";
-            // 
-            // ArticleDescription
-            // 
-            this.ArticleDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ArticleDescription.DataPropertyName = "asstArticleDescription";
-            this.ArticleDescription.HeaderText = "Article description";
-            this.ArticleDescription.Name = "ArticleDescription";
-            // 
-            // Category
-            // 
-            this.Category.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Category.DataPropertyName = "asstCategory";
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            // 
-            // Price
-            // 
-            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Price.DataPropertyName = "asstPrice";
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
             // 
             // FormManageAssortiment
             // 

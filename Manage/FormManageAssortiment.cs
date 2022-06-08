@@ -62,6 +62,11 @@ namespace Manage
             myForm.SetArticle(row);
             myForm.Show();
         }
+
+        private void txtSearchAssortiment_TextChanged(object sender, EventArgs e)
+        {
+            dtGrid.DefaultView.RowFilter = String.Format($"asstArticleNumber LIKE '%{txtSearchAssortiment.Text}%' OR asstArticleDescription LIKE '%{txtSearchAssortiment.Text}%'");
+        }
         #endregion
 
         #region Functions
@@ -79,6 +84,6 @@ namespace Manage
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion  
+        #endregion
     }
 }
