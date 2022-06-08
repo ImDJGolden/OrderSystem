@@ -119,5 +119,10 @@ namespace Manage
             }
         }
         #endregion
+
+        private void cboCategory_TextChanged(object sender, EventArgs e)
+        {
+            GetGrid();
+        }
     }
 }

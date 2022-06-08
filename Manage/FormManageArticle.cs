@@ -33,9 +33,12 @@ namespace Manage
 
         private void FormManageArticle_Load(object sender, EventArgs e)
         {
-            DataTable dt = dbo.GetAllCategories();
-            cboCategory.DataSource = dt;
-            cboCategory.DisplayMember = "spCategory";
+            if (!edit)
+            {
+                DataTable dt = dbo.GetAllCategories();
+                cboCategory.DataSource = dt;
+                cboCategory.DisplayMember = "spCategory";
+            }
         }
         #endregion
 
@@ -130,6 +133,10 @@ namespace Manage
         #region Functions
         public void SetArticle(DataRow row)
         {
+            DataTable dt = dbo.GetAllCategories();
+            cboCategory.DataSource = dt;
+            cboCategory.DisplayMember = "spCategory";
+
             artNr = row[0].ToString();
             artDesc = row[1].ToString();
             category = row[2].ToString();
@@ -137,7 +144,7 @@ namespace Manage
 
             this.txtArticleNr.Text = artNr;
             this.txtArticleDesc.Text = artDesc;
-            this.cboCategory.Text = category;
+            this.cboCategory.SelectedIndex = cboCategory.FindStringExact(category);
             this.txtPrice.Text = price;
 
             edit = true;

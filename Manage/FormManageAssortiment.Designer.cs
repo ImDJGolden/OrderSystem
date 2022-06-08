@@ -103,6 +103,7 @@
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(137, 21);
             this.cboCategory.TabIndex = 0;
+            this.cboCategory.TextChanged += new System.EventHandler(this.cboCategory_TextChanged);
             // 
             // btnClose
             // 
@@ -163,6 +164,7 @@
             this.Category,
             this.Price});
             this.dgvAssortiment.Location = new System.Drawing.Point(13, 98);
+            this.dgvAssortiment.MultiSelect = false;
             this.dgvAssortiment.Name = "dgvAssortiment";
             this.dgvAssortiment.ReadOnly = true;
             this.dgvAssortiment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
