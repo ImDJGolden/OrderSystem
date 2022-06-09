@@ -5,9 +5,9 @@
     * Orders
 
 -   Order
-    ... * Broodjes
+    * ... Broodjes
     * Frituur
-    ... * Pokebowl
+    * ... Pokebowl
 
 -   Overview
     * Db
@@ -22,7 +22,15 @@
 
 # Database
 dbAssortiment
+* asstArticleNumber
+* asstArticleDescription
+* asstCategory
+* TODO -> asstSubCategory
+* asstPrice
 
 dbSystemParameters
+* spCategory
+* TODO -> spSubCategory
 
 dbOrder
+* ...
