@@ -1,31 +1,28 @@
 # OrderSystem
-    ## Front-end
-    -   Manage
-        * Edit (all order types editable here)
+## Front-end
+-   Manage
+    * Assortiment
+    * Orders
 
-    -   Order
-        * Broodjes
-        ... * Frituur
-        ... * Pokebowl
+-   Order
+    ... * Broodjes
+    * Frituur
+    ... * Pokebowl
 
-    -   Overview
-        * Db
-        * Orders
+-   Overview
+    * Db
+    * Orders
 
-    ## Back-end
-    - Class order
-        * name person
-        * type order
-            * items
+## Back-end
+- Class order
+    * name person
+    * type order
+    * items
+    * Status
 
 # Database
-    -   dbBroodjes
+dbAssortiment
 
-    -   dbFrituur
+dbSystemParameters
 
-    -   dbPokebowl
-
-    -   dbOrders
-        -   broodjes
-        -   frituur
-        -   pokebowl
+dbOrder
