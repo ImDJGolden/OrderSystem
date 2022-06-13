@@ -102,25 +102,26 @@
             this.txtArticleNr.Location = new System.Drawing.Point(149, 6);
             this.txtArticleNr.Name = "txtArticleNr";
             this.txtArticleNr.Size = new System.Drawing.Size(212, 20);
-            this.txtArticleNr.TabIndex = 4;
+            this.txtArticleNr.TabIndex = 1;
             // 
             // txtArticleDesc
             // 
             this.txtArticleDesc.Location = new System.Drawing.Point(149, 32);
             this.txtArticleDesc.Name = "txtArticleDesc";
             this.txtArticleDesc.Size = new System.Drawing.Size(212, 20);
-            this.txtArticleDesc.TabIndex = 6;
+            this.txtArticleDesc.TabIndex = 2;
             // 
             // txtPrice
             // 
             this.txtPrice.Location = new System.Drawing.Point(149, 112);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(212, 20);
-            this.txtPrice.TabIndex = 7;
+            this.txtPrice.TabIndex = 5;
             // 
             // cboCategory
             // 
             this.cboCategory.FormattingEnabled = true;
+            this.cboCategory.ItemHeight = 13;
             this.cboCategory.Location = new System.Drawing.Point(149, 58);
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(212, 21);
@@ -132,7 +133,7 @@
             this.btnSave.Location = new System.Drawing.Point(286, 138);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 9;
+            this.btnSave.TabIndex = 6;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -142,7 +143,7 @@
             this.btnClose.Location = new System.Drawing.Point(497, 4);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
-            this.btnClose.TabIndex = 10;
+            this.btnClose.TabIndex = 7;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -160,6 +161,7 @@
             // cboSubCategory
             // 
             this.cboSubCategory.FormattingEnabled = true;
+            this.cboSubCategory.ItemHeight = 13;
             this.cboSubCategory.Location = new System.Drawing.Point(149, 85);
             this.cboSubCategory.Name = "cboSubCategory";
             this.cboSubCategory.Size = new System.Drawing.Size(212, 21);

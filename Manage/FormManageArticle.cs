@@ -78,7 +78,7 @@ namespace Manage
 
                         foreach (DataRow row in dt.Rows)
                         {
-                            if (row["asstArticleNumber"].ToString() == artNr)
+                            if (row["asstArticleNumber"].ToString().ToLower() == artNr.ToLower())
                             {
                                 artNrExists = true;
 
@@ -88,7 +88,6 @@ namespace Manage
                                 }
                             }
                         }
-
 
                         if (!artNrExists)
                         {
