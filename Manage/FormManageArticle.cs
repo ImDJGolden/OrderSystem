@@ -20,6 +20,7 @@ namespace Manage
         string artNr = "";
         string artDesc = "";
         string category = "";
+        string subCategory = "";
         string price = "";
 
         bool edit = false;
@@ -35,9 +36,13 @@ namespace Manage
         {
             if (!edit)
             {
-                DataTable dt = dbo.GetAllCategories();
-                cboCategory.DataSource = dt;
+                DataTable dtCat = dbo.GetAllCategories();
+                cboCategory.DataSource = dtCat;
                 cboCategory.DisplayMember = "spCategory";
+
+                DataTable dtSubCat = dbo.GetSubCategories(cboCategory.Text);
+                this.cboSubCategory.DataSource = dtSubCat;
+                this.cboSubCategory.DisplayMember = "spSubCategory";
             }
         }
         #endregion
@@ -63,6 +68,7 @@ namespace Manage
                     artNr = txtArticleNr.Text;
                     artDesc = txtArticleDesc.Text;
                     category = cboCategory.Text;
+                    subCategory = cboSubCategory.Text;
                     price = txtPrice.Text;
                     price = price.Replace('.', ',');
 
@@ -89,21 +95,31 @@ namespace Manage
                             if (edit)
                             {
                                 //EDIT db record
-                                if (dbo.UpdateArticle(prevArtNr, artNr, artDesc, category, price))
+                                if (dbo.UpdateArticle(prevArtNr, artNr, artDesc, category, subCategory, price))
                                 {
                                     MessageBox.Show($"Article: '{artNr}' has been succesfully updated.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     edit = false;
+
+                                    FormManageAssortiment frm = FormManageAssortiment.GetInstance();
+                                    frm.GetGrid();
+
+                                    this.Close();
                                 }
                                 else { MessageBox.Show($"An Error has occurd while updating Article '{artNr}'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                             }
                             else
                             {
                                 //INSERT new db record
-                                if (dbo.AddArticle(artNr, artDesc, category))
+                                if (dbo.AddArticle(artNr, artDesc, category, subCategory))
                                 {
                                     if (dbo.UpdateArticle(artNr, price))
                                     {
                                         MessageBox.Show($"Article: '{artNr}' has been succesfully added.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                        FormManageAssortiment frm = FormManageAssortiment.GetInstance();
+                                        frm.GetGrid();
+
+                                        this.Close();
                                     }
                                     else { MessageBox.Show($"An Error has occurd while adding Article '{artNr}'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
                                 }
@@ -111,11 +127,6 @@ namespace Manage
                             }
                         }
                         else { MessageBox.Show($"Article number: '{artNr}' already exists. Try another one.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
-
-                        FormManageAssortiment frm = FormManageAssortiment.GetInstance();
-                        frm.GetGrid();
-
-                        this.Close();
                     }
                     catch (Exception ex)
                     {
@@ -128,6 +139,16 @@ namespace Manage
                 MessageBox.Show($"Empty fields are not allowed.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void cboCategory_TextChanged(object sender, EventArgs e)
+        {
+            if (this.cboCategory.Text != "-- Default --")
+            {
+                DataTable dt = dbo.GetSubCategories(cboCategory.Text);
+                this.cboSubCategory.DataSource = dt;
+                this.cboSubCategory.DisplayMember = "spSubCategory";
+            }
+        }
         #endregion
 
         #region Functions
@@ -137,14 +158,16 @@ namespace Manage
             cboCategory.DataSource = dt;
             cboCategory.DisplayMember = "spCategory";
 
-            artNr = row[0].ToString();
-            artDesc = row[1].ToString();
-            category = row[2].ToString();
-            price = row[3].ToString();
+            artNr = row[1].ToString();
+            artDesc = row[2].ToString();
+            category = row[3].ToString();
+            subCategory = row[4].ToString();
+            price = row[5].ToString();
 
             this.txtArticleNr.Text = artNr;
             this.txtArticleDesc.Text = artDesc;
             this.cboCategory.SelectedIndex = cboCategory.FindStringExact(category);
+            this.cboSubCategory.SelectedIndex = cboSubCategory.FindStringExact(subCategory);
             this.txtPrice.Text = price;
 
             edit = true;

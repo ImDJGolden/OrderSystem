@@ -29,7 +29,7 @@ namespace DBControl
             return dt;
         }
 
-        public DataTable GetArticle(string category)
+        public DataTable GetArticle(string category, string subCategory)
         {
             DataTable dt = new DataTable();
             string sql = $"SELECT * FROM Assortiment ";
@@ -37,6 +37,14 @@ namespace DBControl
             if (category != "-- Default --")
             {
                 sql += $"WHERE asstCategory = '{category}' ";
+
+                if (subCategory != "")
+                {
+                    if (subCategory != "-- Default --")
+                    {
+                        sql += $"AND asstSubCategory = '{subCategory}'";
+                    }
+                }
             }
 
             try
@@ -51,10 +59,10 @@ namespace DBControl
             return dt;
         }
 
-        public bool AddArticle(string artNr, string artDesc, string category)
+        public bool AddArticle(string artNr, string artDesc, string category, string subCategory)
         {
-            string sql = $"INSERT INTO Assortiment (asstArticleNumber, asstArticleDescription, asstCategory) " +
-                         $"VALUES ( '{artNr}', '{artDesc}', '{category}' );";
+            string sql = $"INSERT INTO Assortiment (asstArticleNumber, asstArticleDescription, asstCategory, asstSubCategory) " +
+                         $"VALUES ( '{artNr}', '{artDesc}', '{category}', '{subCategory}' );";
 
             try
             {
@@ -70,7 +78,7 @@ namespace DBControl
             }
         }
 
-        public bool UpdateArticle(string artNrOld, string artNrNew, string artDesc, string category, string price)
+        public bool UpdateArticle(string artNrOld, string artNrNew, string artDesc, string category, string subCategory, string price)
         {
             if (category == "-- Default --")
             {
@@ -78,7 +86,7 @@ namespace DBControl
             }
 
             string sql = $"UPDATE Assortiment " +
-                         $"SET asstArticleNumber = '{artNrNew}', asstArticleDescription = '{artDesc}', asstCategory = '{category}', asstPrice = '{Convert.ToDouble(price)}'" +
+                         $"SET asstArticleNumber = '{artNrNew}', asstArticleDescription = '{artDesc}', asstCategory = '{category}', asstSubCategory = '{subCategory}', asstPrice = '{Convert.ToDouble(price)}'" +
                          $"WHERE asstArticleNumber = '{artNrOld}';";
 
             try
@@ -141,8 +149,28 @@ namespace DBControl
         public DataTable GetAllCategories()
         {
             DataTable dt = new DataTable();
-            string sql = $"SELECT spCategory " +
+            string sql = $"SELECT DISTINCT (spCategory) " +
                          $"FROM SystemParameters;";
+
+            try
+            {
+                dt = dbc.GetDataTable(sql);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return dt;
+        }
+
+        public DataTable GetSubCategories(string cat)
+        {
+            DataTable dt = new DataTable();
+            string sql = $"SELECT spSubCategory " +
+                         $"FROM SystemParameters " +
+                         $"WHERE spCategory = '{cat}' " +
+                         $"OR  spCategory = '-- Default --'; ";
 
             try
             {

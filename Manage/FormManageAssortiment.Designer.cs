@@ -45,6 +45,8 @@
         private void InitializeComponent()
         {
             this.pnlCategory = new System.Windows.Forms.Panel();
+            this.cboSubCategory = new System.Windows.Forms.ComboBox();
+            this.lblSubCategory = new System.Windows.Forms.Label();
             this.btnAddCategory = new System.Windows.Forms.Button();
             this.lblCategory = new System.Windows.Forms.Label();
             this.cboCategory = new System.Windows.Forms.ComboBox();
@@ -56,7 +58,9 @@
             this.ArticleNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ArticleDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtSearchAssortiment = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
@@ -66,17 +70,38 @@
             // 
             // pnlCategory
             // 
+            this.pnlCategory.Controls.Add(this.cboSubCategory);
+            this.pnlCategory.Controls.Add(this.lblSubCategory);
             this.pnlCategory.Controls.Add(this.btnAddCategory);
             this.pnlCategory.Controls.Add(this.lblCategory);
             this.pnlCategory.Controls.Add(this.cboCategory);
             this.pnlCategory.Location = new System.Drawing.Point(13, 13);
             this.pnlCategory.Name = "pnlCategory";
-            this.pnlCategory.Size = new System.Drawing.Size(298, 31);
+            this.pnlCategory.Size = new System.Drawing.Size(430, 53);
             this.pnlCategory.TabIndex = 0;
+            // 
+            // cboSubCategory
+            // 
+            this.cboSubCategory.FormattingEnabled = true;
+            this.cboSubCategory.Location = new System.Drawing.Point(118, 30);
+            this.cboSubCategory.Name = "cboSubCategory";
+            this.cboSubCategory.Size = new System.Drawing.Size(137, 21);
+            this.cboSubCategory.TabIndex = 4;
+            this.cboSubCategory.TextChanged += new System.EventHandler(this.cboSubCategory_TextChanged);
+            // 
+            // lblSubCategory
+            // 
+            this.lblSubCategory.AutoSize = true;
+            this.lblSubCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubCategory.Location = new System.Drawing.Point(3, 30);
+            this.lblSubCategory.Name = "lblSubCategory";
+            this.lblSubCategory.Size = new System.Drawing.Size(86, 13);
+            this.lblSubCategory.TabIndex = 3;
+            this.lblSubCategory.Text = "Sub category:";
             // 
             // btnAddCategory
             // 
-            this.btnAddCategory.Location = new System.Drawing.Point(220, 2);
+            this.btnAddCategory.Location = new System.Drawing.Point(352, 3);
             this.btnAddCategory.Name = "btnAddCategory";
             this.btnAddCategory.Size = new System.Drawing.Size(75, 23);
             this.btnAddCategory.TabIndex = 2;
@@ -99,7 +124,7 @@
             this.cboCategory.FormattingEnabled = true;
             this.cboCategory.Items.AddRange(new object[] {
             "All categories"});
-            this.cboCategory.Location = new System.Drawing.Point(77, 3);
+            this.cboCategory.Location = new System.Drawing.Point(118, 3);
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(137, 21);
             this.cboCategory.TabIndex = 0;
@@ -119,7 +144,7 @@
             // btnDelete
             // 
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Location = new System.Drawing.Point(1174, 236);
+            this.btnDelete.Location = new System.Drawing.Point(1179, 305);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(168, 63);
             this.btnDelete.TabIndex = 9;
@@ -130,7 +155,7 @@
             // btnEdit
             // 
             this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Location = new System.Drawing.Point(1174, 167);
+            this.btnEdit.Location = new System.Drawing.Point(1179, 236);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(168, 63);
             this.btnEdit.TabIndex = 8;
@@ -141,7 +166,7 @@
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAdd.Location = new System.Drawing.Point(1174, 98);
+            this.btnAdd.Location = new System.Drawing.Point(1179, 167);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(168, 63);
             this.btnAdd.TabIndex = 7;
@@ -162,13 +187,15 @@
             this.ArticleNumber,
             this.ArticleDescription,
             this.Category,
-            this.Price});
-            this.dgvAssortiment.Location = new System.Drawing.Point(13, 98);
+            this.SubCategory,
+            this.Price,
+            this.Index});
+            this.dgvAssortiment.Location = new System.Drawing.Point(12, 167);
             this.dgvAssortiment.MultiSelect = false;
             this.dgvAssortiment.Name = "dgvAssortiment";
             this.dgvAssortiment.ReadOnly = true;
             this.dgvAssortiment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAssortiment.Size = new System.Drawing.Size(1155, 682);
+            this.dgvAssortiment.Size = new System.Drawing.Size(1155, 613);
             this.dgvAssortiment.TabIndex = 6;
             // 
             // ArticleNumber
@@ -195,6 +222,14 @@
             this.Category.Name = "Category";
             this.Category.ReadOnly = true;
             // 
+            // SubCategory
+            // 
+            this.SubCategory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SubCategory.DataPropertyName = "asstSubCategory";
+            this.SubCategory.HeaderText = "Sub category";
+            this.SubCategory.Name = "SubCategory";
+            this.SubCategory.ReadOnly = true;
+            // 
             // Price
             // 
             this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -203,9 +238,17 @@
             this.Price.Name = "Price";
             this.Price.ReadOnly = true;
             // 
+            // Index
+            // 
+            this.Index.DataPropertyName = "asstIndex";
+            this.Index.HeaderText = "Index";
+            this.Index.Name = "Index";
+            this.Index.ReadOnly = true;
+            this.Index.Visible = false;
+            // 
             // txtSearchAssortiment
             // 
-            this.txtSearchAssortiment.Location = new System.Drawing.Point(67, 72);
+            this.txtSearchAssortiment.Location = new System.Drawing.Point(67, 136);
             this.txtSearchAssortiment.Name = "txtSearchAssortiment";
             this.txtSearchAssortiment.Size = new System.Drawing.Size(160, 20);
             this.txtSearchAssortiment.TabIndex = 5;
@@ -215,7 +258,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 75);
+            this.label1.Location = new System.Drawing.Point(10, 139);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 13);
             this.label1.TabIndex = 10;
@@ -223,7 +266,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(233, 70);
+            this.btnRefresh.Location = new System.Drawing.Point(233, 134);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 3;
@@ -271,10 +314,14 @@
         private System.Windows.Forms.Button btnAddCategory;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.ComboBox cboSubCategory;
+        private System.Windows.Forms.Label lblSubCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn ArticleNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn ArticleDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SubCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Index;
     }
 }
 

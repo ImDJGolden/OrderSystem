@@ -16,6 +16,8 @@ namespace Manage
         DBOrderSystem dbo = new DBOrderSystem();
         DataTable dtGrid = new DataTable();
 
+        bool load = true;
+
         #region From
         public FormManageAssortiment()
         {
@@ -27,15 +29,21 @@ namespace Manage
         {
             this.WindowState = FormWindowState.Maximized;
 
+            this.lblSubCategory.Visible = false;
+            this.cboSubCategory.Visible = false;
+
             DataTable dt = dbo.GetAllCategories();
-            cboCategory.DataSource = dt;
-            cboCategory.DisplayMember = "spCategory";
+            this.cboCategory.DataSource = dt;
+            this.cboCategory.DisplayMember = "spCategory";
 
             GetGrid();
+
+            load = false;
         }
         #endregion
 
         #region Buttons
+        //Buttons
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -55,19 +63,17 @@ namespace Manage
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            DataRowView dgvRowData = (DataRowView)dgvAssortiment.SelectedRows[0].DataBoundItem;
-            DataRow row = (DataRow)dgvRowData.Row;
+            if (dgvAssortiment.Rows.Count > 0)
+            {
+                DataRowView dgvRowData = (DataRowView)dgvAssortiment.SelectedRows[0].DataBoundItem;
+                DataRow row = (DataRow)dgvRowData.Row;
 
-            FormManageArticle myForm = FormManageArticle.GetInstance();
-            myForm.SetArticle(row);
-            myForm.Show();
+                FormManageArticle myForm = FormManageArticle.GetInstance();
+                myForm.SetArticle(row);
+                myForm.Show();
+            }
         }
 
-        private void txtSearchAssortiment_TextChanged(object sender, EventArgs e)
-        {
-            dtGrid.DefaultView.RowFilter = String.Format($"asstArticleNumber LIKE '%{txtSearchAssortiment.Text}%' OR asstArticleDescription LIKE '%{txtSearchAssortiment.Text}%'");
-        }
-        
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             GetGrid();
@@ -101,16 +107,66 @@ namespace Manage
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        //TextChanged
+        private void txtSearchAssortiment_TextChanged(object sender, EventArgs e)
+        {
+            dtGrid.DefaultView.RowFilter = String.Format($"asstArticleNumber LIKE '%{txtSearchAssortiment.Text}%' OR asstArticleDescription LIKE '%{txtSearchAssortiment.Text}%'");
+        }
+
+        private void cboCategory_TextChanged(object sender, EventArgs e)
+        {
+            if (!load)
+            {
+                GetGrid();
+            }
+
+            if (this.cboCategory.Text != "-- Default --")
+            {
+                this.lblSubCategory.Visible = true;
+                this.cboSubCategory.Visible = true;
+
+                DataTable dt = dbo.GetSubCategories(cboCategory.Text);
+                this.cboSubCategory.DataSource = dt;
+                this.cboSubCategory.DisplayMember = "spSubCategory";
+            }
+            else
+            {
+                this.lblSubCategory.Visible = false;
+                this.cboSubCategory.Visible = false;
+            }
+        }
+
+        private void cboSubCategory_TextChanged(object sender, EventArgs e)
+        {
+            if (!load)
+            {
+                GetGrid();
+            }
+        }
         #endregion
 
         #region Functions
         public void GetGrid()
         {
-            string cat = cboCategory.Text;
+            string cat = "";
+            string subCat = "";
+
+            if (load)
+            {
+                cat = "-- Default --";
+            }
+            else
+            {
+                cat = cboCategory.Text;
+                subCat = cboSubCategory.Text;
+
+            }
 
             try
             {
-                dtGrid = dbo.GetArticle(cat);
+                dtGrid = dbo.GetArticle(cat, subCat);
                 dgvAssortiment.DataSource = dtGrid;
             }
             catch (Exception ex)
@@ -118,11 +174,7 @@ namespace Manage
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        #endregion
 
-        private void cboCategory_TextChanged(object sender, EventArgs e)
-        {
-            GetGrid();
-        }
+        #endregion
     }
 }

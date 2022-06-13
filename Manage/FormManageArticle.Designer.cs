@@ -54,6 +54,8 @@
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
+            this.lblSubCategory = new System.Windows.Forms.Label();
+            this.cboSubCategory = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblArticleNr
@@ -88,9 +90,8 @@
             // 
             // lblPrice
             // 
-            this.lblPrice.AutoSize = true;
             this.lblPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrice.Location = new System.Drawing.Point(12, 88);
+            this.lblPrice.Location = new System.Drawing.Point(12, 115);
             this.lblPrice.Name = "lblPrice";
             this.lblPrice.Size = new System.Drawing.Size(40, 13);
             this.lblPrice.TabIndex = 3;
@@ -112,7 +113,7 @@
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(149, 85);
+            this.txtPrice.Location = new System.Drawing.Point(149, 112);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(212, 20);
             this.txtPrice.TabIndex = 7;
@@ -124,10 +125,11 @@
             this.cboCategory.Name = "cboCategory";
             this.cboCategory.Size = new System.Drawing.Size(212, 21);
             this.cboCategory.TabIndex = 8;
+            this.cboCategory.TextChanged += new System.EventHandler(this.cboCategory_TextChanged);
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(286, 111);
+            this.btnSave.Location = new System.Drawing.Point(286, 138);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 9;
@@ -145,11 +147,31 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // lblSubCategory
+            // 
+            this.lblSubCategory.AutoSize = true;
+            this.lblSubCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubCategory.Location = new System.Drawing.Point(12, 88);
+            this.lblSubCategory.Name = "lblSubCategory";
+            this.lblSubCategory.Size = new System.Drawing.Size(86, 13);
+            this.lblSubCategory.TabIndex = 11;
+            this.lblSubCategory.Text = "Sub category:";
+            // 
+            // cboSubCategory
+            // 
+            this.cboSubCategory.FormattingEnabled = true;
+            this.cboSubCategory.Location = new System.Drawing.Point(149, 85);
+            this.cboSubCategory.Name = "cboSubCategory";
+            this.cboSubCategory.Size = new System.Drawing.Size(212, 21);
+            this.cboSubCategory.TabIndex = 12;
+            // 
             // FormManageArticle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 161);
+            this.ClientSize = new System.Drawing.Size(584, 181);
+            this.Controls.Add(this.cboSubCategory);
+            this.Controls.Add(this.lblSubCategory);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cboCategory);
@@ -181,5 +203,7 @@
         private System.Windows.Forms.ComboBox cboCategory;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Label lblSubCategory;
+        private System.Windows.Forms.ComboBox cboSubCategory;
     }
 }
