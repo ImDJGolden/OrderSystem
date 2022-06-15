@@ -14,48 +14,89 @@ namespace Manage
     public partial class FormManageAddCategory : Form
     {
         DBOrderSystem dbo = new DBOrderSystem();
+        DataTable dt = new DataTable();
 
         #region Form
         public FormManageAddCategory()
         {
             InitializeComponent();
         }
+
+        private void FormManageAddCategory_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                dt = dbo.GetAllCategories();
+
+                dgvCategories.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         #endregion
 
         #region button
         private void btnSave_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            bool catExists = false;
-            string categoryName = txtCategory.Text;
+            DataTable dtdb = dbo.GetAllCategories();
+
+            bool exists = false;
+            string cat = "";
+            string subCat = "";
 
             try
             {
-                dt = dbo.GetAllCategories();
-
-                foreach (DataRow row in dt.Rows)
+                for (int i = 0; i <= dt.Rows.Count - 1; i++)
                 {
-                    if (row["spCategory"].ToString().ToLower() == categoryName.ToLower())
+                    cat = dt.Rows[i]["spCategory"].ToString();
+                    subCat = dt.Rows[i]["spSubCategory"].ToString();
+
+                    bool contains = dtdb.AsEnumerable().Where(c => c.Field<string>("spCategory").Equals(cat)).Count() > 0;
+
+                    if (contains)
                     {
-                        catExists = true;
+                        contains = dtdb.AsEnumerable().Where(c => c.Field<string>("spSubCategory").Equals(subCat)).Count() > 0;
+
+                        if (contains)
+                        {
+                            exists = true; 
+                        }
+                        else
+                        {
+                            if (dbo.AddCategory(cat, subCat))
+                            {
+                                MessageBox.Show($"Category has been succesfully added", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                FormManageAddCategory_Load(sender, e);
+                            }
+                            else 
+                            {
+                                MessageBox.Show($"An error occurd while adding the category", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (dbo.AddCategory(cat, subCat))
+                        {
+                            MessageBox.Show($"Category has been succesfully added", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            FormManageAddCategory_Load(sender, e);
+                        }
+                        else
+                        {
+                            MessageBox.Show($"An error occurd while adding the category", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
 
-                if (!catExists)
+                if (exists)
                 {
-                    if (dbo.AddCategory(categoryName))
-                    {
-                        MessageBox.Show($"Category: '{categoryName}' has been succesfully added.", "Succes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show($"All categories already exists in the database", "Already exists.", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                        txtCategory.Text = "";
-                    }
-                    else { MessageBox.Show($"An Error has occurd while adding category: '{categoryName}'.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); }
-                }
-                else 
-                { 
-                    MessageBox.Show($"Category: '{categoryName}' already exists. Try another name.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    txtCategory.Text = "";
-                    catExists = false;
+                    exists = false;
                 }
             }
             catch (Exception ex)

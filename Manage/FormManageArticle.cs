@@ -36,7 +36,7 @@ namespace Manage
         {
             if (!edit)
             {
-                DataTable dtCat = dbo.GetAllCategories();
+                DataTable dtCat = dbo.GetCategories();
                 cboCategory.DataSource = dtCat;
                 cboCategory.DisplayMember = "spCategory";
 
@@ -153,7 +153,7 @@ namespace Manage
         #region Functions
         public void SetArticle(DataRow row)
         {
-            DataTable dt = dbo.GetAllCategories();
+            DataTable dt = dbo.GetCategories();
             cboCategory.DataSource = dt;
             cboCategory.DisplayMember = "spCategory";
 

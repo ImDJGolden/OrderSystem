@@ -149,6 +149,23 @@ namespace DBControl
         public DataTable GetAllCategories()
         {
             DataTable dt = new DataTable();
+            string sql = $"SELECT * FROM SystemParameters";
+
+            try
+            {
+                dt = dbc.GetDataTable(sql);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return dt;
+        }
+
+        public DataTable GetCategories()
+        {
+            DataTable dt = new DataTable();
             string sql = $"SELECT DISTINCT (spCategory) " +
                          $"FROM SystemParameters;";
 
@@ -184,10 +201,10 @@ namespace DBControl
             return dt;
         }
 
-        public bool AddCategory(string category)
+        public bool AddCategory(string category, string subCategory)
         {
-            string sql = $"INSERT INTO SystemParameters (spCategory) " +
-                         $"VALUES ( '{category}' );";
+            string sql = $"INSERT INTO SystemParameters (spCategory, spSubCategory) " +
+                         $"VALUES ( '{category}', '{subCategory}' );";
 
             try
             {

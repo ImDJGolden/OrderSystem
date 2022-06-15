@@ -32,7 +32,7 @@ namespace Manage
             this.lblSubCategory.Visible = false;
             this.cboSubCategory.Visible = false;
 
-            DataTable dt = dbo.GetAllCategories();
+            DataTable dt = dbo.GetCategories();
             this.cboCategory.DataSource = dt;
             this.cboCategory.DisplayMember = "spCategory";
 
@@ -84,8 +84,8 @@ namespace Manage
             DataRowView dgvRowData = (DataRowView)dgvAssortiment.SelectedRows[0].DataBoundItem;
             DataRow row = (DataRow)dgvRowData.Row;
 
-            string artNr = row[0].ToString();
-            string artDesc = row[1].ToString();
+            string artNr = row[1].ToString();
+            string artDesc = row[2].ToString();
 
             try
             {
