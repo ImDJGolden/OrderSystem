@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Manage;
+using Order;
 
 namespace OrderSystem
 {
@@ -38,6 +39,8 @@ namespace OrderSystem
         #endregion
 
         #region Link clicked
+        //  [MANAGE]
+        //      Assortiment
         private void lnkManage_Assortiment_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Assortiment();
@@ -47,12 +50,31 @@ namespace OrderSystem
         {
             Assortiment();
         }
+
+
+        //  [ORDER]
+        //      Orders
+        private void lnkManage_Orders_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Orders();
+        }
+
+        private void ordersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Orders();
+        }
         #endregion
 
         #region Redirect Form
         private void Assortiment()
         {
             FormManageAssortiment frm = FormManageAssortiment.GetInstance();
+            this.LaunchScreen(frm);
+        }
+
+        private void Orders()
+        {
+            FormManageOrders frm = FormManageOrders.GetInstance();
             this.LaunchScreen(frm);
         }
         #endregion

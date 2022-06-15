@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9172FEC4-8C47-4C95-9F9D-362E3E713B29}</ProjectGuid>
+    <ProjectGuid>{9B94CC9B-DE33-40D3-8F5C-BBAE841053F7}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>OrderSystem</RootNamespace>
-    <AssemblyName>OrderSystem</AssemblyName>
+    <RootNamespace>Order</RootNamespace>
+    <AssemblyName>Order</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,8 +34,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormMDI.cs">
+    <Compile Include="FormManageOrders.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMDI.Designer.cs">
-      <DependentUpon>FormMDI.cs</DependentUpon>
+    <Compile Include="FormManageOrders.Designer.cs">
+      <DependentUpon>FormManageOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormMDI.resx">
-      <DependentUpon>FormMDI.cs</DependentUpon>
+    <EmbeddedResource Include="FormManageOrders.resx">
+      <DependentUpon>FormManageOrders.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,20 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DBControl\DBControl.csproj">
-      <Project>{655c3a95-2605-4ebc-aaf4-b2528c73260b}</Project>
-      <Name>DBControl</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Manage\Manage.csproj">
-      <Project>{cef44a4b-5f30-422d-8ac6-7b05112b3f7e}</Project>
-      <Name>Manage</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Order\Order.csproj">
-      <Project>{9b94cc9b-de33-40d3-8f5c-bbae841053f7}</Project>
-      <Name>Order</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

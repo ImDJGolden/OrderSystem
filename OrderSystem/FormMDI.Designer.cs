@@ -31,14 +31,16 @@
             this.gboMenu = new System.Windows.Forms.GroupBox();
             this.lblMenuTitle = new System.Windows.Forms.Label();
             this.gboOrder = new System.Windows.Forms.GroupBox();
+            this.lnkManage_Orders = new System.Windows.Forms.LinkLabel();
             this.gboManage = new System.Windows.Forms.GroupBox();
             this.lnkManage_Assortiment = new System.Windows.Forms.LinkLabel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.assortimentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.orderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.broodjesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gboMenu.SuspendLayout();
+            this.gboOrder.SuspendLayout();
             this.gboManage.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +71,7 @@
             // 
             // gboOrder
             // 
+            this.gboOrder.Controls.Add(this.lnkManage_Orders);
             this.gboOrder.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gboOrder.ForeColor = System.Drawing.Color.Orange;
             this.gboOrder.Location = new System.Drawing.Point(6, 157);
@@ -77,6 +80,21 @@
             this.gboOrder.TabIndex = 1;
             this.gboOrder.TabStop = false;
             this.gboOrder.Text = "Order";
+            // 
+            // lnkManage_Orders
+            // 
+            this.lnkManage_Orders.ActiveLinkColor = System.Drawing.Color.YellowGreen;
+            this.lnkManage_Orders.AutoSize = true;
+            this.lnkManage_Orders.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkManage_Orders.LinkColor = System.Drawing.Color.YellowGreen;
+            this.lnkManage_Orders.Location = new System.Drawing.Point(6, 32);
+            this.lnkManage_Orders.Name = "lnkManage_Orders";
+            this.lnkManage_Orders.Size = new System.Drawing.Size(70, 16);
+            this.lnkManage_Orders.TabIndex = 4;
+            this.lnkManage_Orders.TabStop = true;
+            this.lnkManage_Orders.Text = "1. Orders";
+            this.lnkManage_Orders.VisitedLinkColor = System.Drawing.Color.GreenYellow;
+            this.lnkManage_Orders.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkManage_Orders_LinkClicked);
             // 
             // gboManage
             // 
@@ -127,23 +145,24 @@
             // assortimentToolStripMenuItem
             // 
             this.assortimentToolStripMenuItem.Name = "assortimentToolStripMenuItem";
-            this.assortimentToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.assortimentToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.assortimentToolStripMenuItem.Text = "Assortiment";
             this.assortimentToolStripMenuItem.Click += new System.EventHandler(this.assortimentToolStripMenuItem_Click);
             // 
             // orderToolStripMenuItem
             // 
             this.orderToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.broodjesToolStripMenuItem});
+            this.ordersToolStripMenuItem});
             this.orderToolStripMenuItem.Name = "orderToolStripMenuItem";
             this.orderToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.orderToolStripMenuItem.Text = "Order";
             // 
-            // broodjesToolStripMenuItem
+            // ordersToolStripMenuItem
             // 
-            this.broodjesToolStripMenuItem.Name = "broodjesToolStripMenuItem";
-            this.broodjesToolStripMenuItem.Size = new System.Drawing.Size(120, 22);
-            this.broodjesToolStripMenuItem.Text = "Broodjes";
+            this.ordersToolStripMenuItem.Name = "ordersToolStripMenuItem";
+            this.ordersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ordersToolStripMenuItem.Text = "Orders";
+            this.ordersToolStripMenuItem.Click += new System.EventHandler(this.ordersToolStripMenuItem_Click);
             // 
             // FormMDI
             // 
@@ -160,6 +179,8 @@
             this.Text = "Order System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.gboMenu.ResumeLayout(false);
+            this.gboOrder.ResumeLayout(false);
+            this.gboOrder.PerformLayout();
             this.gboManage.ResumeLayout(false);
             this.gboManage.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -175,12 +196,13 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem manageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem orderToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem broodjesToolStripMenuItem;
         private System.Windows.Forms.GroupBox gboOrder;
         private System.Windows.Forms.GroupBox gboManage;
         private System.Windows.Forms.Label lblMenuTitle;
         private System.Windows.Forms.LinkLabel lnkManage_Assortiment;
         private System.Windows.Forms.ToolStripMenuItem assortimentToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel lnkManage_Orders;
+        private System.Windows.Forms.ToolStripMenuItem ordersToolStripMenuItem;
     }
 }
 
