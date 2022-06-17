@@ -144,6 +144,24 @@ namespace DBControl
         }
         #endregion
 
+        #region ManageOrder
+        public DataTable GetOrders()
+        {
+            DataTable dt = new DataTable();
+            string sql = $"";
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return dt;
+        }
+        #endregion
 
         #region Category
         public DataTable GetAllCategories()
