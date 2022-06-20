@@ -145,14 +145,58 @@ namespace DBControl
         #endregion
 
         #region ManageOrder
-        public DataTable GetOrders()
+        public DataTable GetOrders(string orderNr, string category)
         {
             DataTable dt = new DataTable();
-            string sql = $"";
+            string sql = $"SELECT * FROM Orders ";
+
+            if (category != "-- Default --")
+            {
+                sql += $"WHERE odCategory = '{category}' ";
+
+                if (orderNr != "")
+                {
+                    sql += $"AND odOrderNumber = '{orderNr}'";
+                }
+            }
+            else 
+            {
+                if (orderNr != "")
+                {
+                    sql += $" WHERE odOrderNumber = '{orderNr}'";
+                }
+            }
 
             try
             {
+                dt = dbc.GetDataTable(sql);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
+            return dt;
+        }
+
+        public DataTable GetOrders(string orderNr, string category, string status)
+        {
+            DataTable dt = new DataTable();
+            string sql = $"SELECT * FROM Orders " +
+                         $"WHERE odStatus = {status} ";
+
+            if (category != "-- Default --")
+            {
+                sql += $"AND odCategory = '{category}' ";
+            }
+            if (orderNr != "")
+            {
+                sql += $"AND odOrderNumber = '{orderNr}'";
+            }
+
+            try
+            {
+                dt = dbc.GetDataTable(sql);
             }
             catch (Exception)
             {

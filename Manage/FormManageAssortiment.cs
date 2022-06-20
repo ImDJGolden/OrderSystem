@@ -161,7 +161,6 @@ namespace Manage
             {
                 cat = cboCategory.Text;
                 subCat = cboSubCategory.Text;
-
             }
 
             try
