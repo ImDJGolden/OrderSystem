@@ -46,12 +46,29 @@ namespace Order
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            GetGrid();
+            if (rbtStatusTodo.Checked)
+            {
+                GetGrid("Todo");
+            }
+            else if (rbtStatusBusy.Checked)
+            {
+                GetGrid("Busy");
+            }
+            else if (rbtStatusDone.Checked)
+            {
+                GetGrid("Done");
+            }
+            else
+            {
+                GetGrid();
+            }
+            
         }
 
         private void btnAddOrder_Click(object sender, EventArgs e)
         {
-
+            FormMakeOrder frm = FormMakeOrder.GetInstance();
+            frm.Show();
         }
 
         private void btnEditOrder_Click(object sender, EventArgs e)
