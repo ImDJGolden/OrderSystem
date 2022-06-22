@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormMakeOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMakeOrder.Designer.cs">
+      <DependentUpon>FormMakeOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormManageOrders.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,6 +60,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormMakeOrder.resx">
+      <DependentUpon>FormMakeOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormManageOrders.resx">
       <DependentUpon>FormManageOrders.cs</DependentUpon>
     </EmbeddedResource>
