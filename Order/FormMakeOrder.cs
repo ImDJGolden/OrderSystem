@@ -75,12 +75,17 @@ namespace Order
                 GetGridAsst();
             }
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            dtAsst.DefaultView.RowFilter = String.Format($"asstArticleNumber LIKE '%{txtSearch.Text}%' OR asstArticleDescription LIKE '%{txtSearch.Text}%'");
+        }
         #endregion
 
         #region Functions
         public void setOrder(DataRow row)
         {
-
+            //Edit order
 
             edit = true;
         }

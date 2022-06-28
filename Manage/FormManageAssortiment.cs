@@ -148,6 +148,7 @@ namespace Manage
         #endregion
 
         #region Functions
+
         public void GetGrid()
         {
             string cat = "";

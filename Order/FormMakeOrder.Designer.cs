@@ -53,11 +53,12 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblSearch = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.pnlFilterAsst = new System.Windows.Forms.Panel();
             this.lblOrder = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtOrder = new System.Windows.Forms.TextBox();
+            this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ArticleNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ArticleDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -90,13 +91,17 @@
             // 
             this.dgvAssortiment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAssortiment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Index,
             this.ArticleNr,
             this.ArticleDesc,
             this.Category,
             this.SubCategory,
             this.Price});
             this.dgvAssortiment.Location = new System.Drawing.Point(15, 74);
+            this.dgvAssortiment.MultiSelect = false;
             this.dgvAssortiment.Name = "dgvAssortiment";
+            this.dgvAssortiment.ReadOnly = true;
+            this.dgvAssortiment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAssortiment.Size = new System.Drawing.Size(625, 601);
             this.dgvAssortiment.TabIndex = 2;
             // 
@@ -159,12 +164,13 @@
             this.lblSearch.TabIndex = 8;
             this.lblSearch.Text = "Search:";
             // 
-            // textBox1
+            // txtSearch
             // 
-            this.textBox1.Location = new System.Drawing.Point(61, 36);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(155, 20);
-            this.textBox1.TabIndex = 9;
+            this.txtSearch.Location = new System.Drawing.Point(61, 36);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(155, 20);
+            this.txtSearch.TabIndex = 9;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // btnRefresh
             // 
@@ -181,7 +187,7 @@
             this.pnlFilterAsst.Controls.Add(this.lblCategory);
             this.pnlFilterAsst.Controls.Add(this.btnRefresh);
             this.pnlFilterAsst.Controls.Add(this.cboCategory);
-            this.pnlFilterAsst.Controls.Add(this.textBox1);
+            this.pnlFilterAsst.Controls.Add(this.txtSearch);
             this.pnlFilterAsst.Controls.Add(this.lblSearch);
             this.pnlFilterAsst.Location = new System.Drawing.Point(12, 5);
             this.pnlFilterAsst.Name = "pnlFilterAsst";
@@ -191,18 +197,26 @@
             // lblOrder
             // 
             this.lblOrder.AutoSize = true;
-            this.lblOrder.Location = new System.Drawing.Point(778, 44);
+            this.lblOrder.Location = new System.Drawing.Point(753, 45);
             this.lblOrder.Name = "lblOrder";
             this.lblOrder.Size = new System.Drawing.Size(36, 13);
             this.lblOrder.TabIndex = 12;
             this.lblOrder.Text = "Order:";
             // 
-            // textBox2
+            // txtOrder
             // 
-            this.textBox2.Location = new System.Drawing.Point(820, 41);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(143, 20);
-            this.textBox2.TabIndex = 13;
+            this.txtOrder.Location = new System.Drawing.Point(795, 42);
+            this.txtOrder.Name = "txtOrder";
+            this.txtOrder.Size = new System.Drawing.Size(143, 20);
+            this.txtOrder.TabIndex = 13;
+            // 
+            // Index
+            // 
+            this.Index.DataPropertyName = "asstIndex";
+            this.Index.HeaderText = "Index";
+            this.Index.Name = "Index";
+            this.Index.ReadOnly = true;
+            this.Index.Visible = false;
             // 
             // ArticleNr
             // 
@@ -210,6 +224,7 @@
             this.ArticleNr.DataPropertyName = "asstArticleNumber";
             this.ArticleNr.HeaderText = "Article Number";
             this.ArticleNr.Name = "ArticleNr";
+            this.ArticleNr.ReadOnly = true;
             // 
             // ArticleDesc
             // 
@@ -217,6 +232,7 @@
             this.ArticleDesc.DataPropertyName = "asstArticleDescription";
             this.ArticleDesc.HeaderText = "Article Description";
             this.ArticleDesc.Name = "ArticleDesc";
+            this.ArticleDesc.ReadOnly = true;
             // 
             // Category
             // 
@@ -224,6 +240,7 @@
             this.Category.DataPropertyName = "asstCategory";
             this.Category.HeaderText = "Category";
             this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
             // 
             // SubCategory
             // 
@@ -231,6 +248,7 @@
             this.SubCategory.DataPropertyName = "asstSubCategory";
             this.SubCategory.HeaderText = "Sub Category";
             this.SubCategory.Name = "SubCategory";
+            this.SubCategory.ReadOnly = true;
             // 
             // Price
             // 
@@ -238,13 +256,14 @@
             this.Price.DataPropertyName = "asstPrice";
             this.Price.HeaderText = "Price";
             this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
             // 
             // FormMakeOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1393, 716);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtOrder);
             this.Controls.Add(this.lblOrder);
             this.Controls.Add(this.pnlFilterAsst);
             this.Controls.Add(this.btnSave);
@@ -277,11 +296,12 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblSearch;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Panel pnlFilterAsst;
         private System.Windows.Forms.Label lblOrder;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtOrder;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Index;
         private System.Windows.Forms.DataGridViewTextBoxColumn ArticleNr;
         private System.Windows.Forms.DataGridViewTextBoxColumn ArticleDesc;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
