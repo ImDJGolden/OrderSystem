@@ -21,6 +21,13 @@ namespace Order
         bool edit = false;
         bool load = true;
 
+        string category = "";
+        string subCategory = "";
+        string artNr = "";
+        string artDesc = "";
+        int amount = 0;
+        double artPrice = 0;
+        double totalPrice = 0;
         #endregion
 
         #region Form
@@ -36,8 +43,15 @@ namespace Order
             cboCategory.DataSource = dt;
             this.cboCategory.DisplayMember = "spCategory";
 
+            GetGridOrder();
             GetGridAsst();
+
             load = false;
+
+            if (!edit)
+            {
+                CreateOrderNumber();
+            }
         }
         #endregion
 
@@ -50,7 +64,32 @@ namespace Order
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            DataRowView dataRowView = (DataRowView)dgvAssortiment.Rows[0].DataBoundItem;
+            DataRow dataRow = (DataRow)dataRowView.Row;
 
+            string x = "";
+
+            category = dataRow[3].ToString();
+            subCategory = dataRow[4].ToString();
+            artNr = dataRow[1].ToString();
+            artDesc = dataRow[2].ToString();
+            artPrice = Convert.ToDouble(dataRow[5]);
+
+            bool checkOrder = dtOrder.AsEnumerable().Where(c => c.Field<string>("oddArticleNr").Equals(artNr)).Count() > 0;
+
+            if (!checkOrder)
+            {
+                //Not found : Add
+                dtOrder.Rows.Add("OrderNr here", category, subCategory, artNr, artDesc, amount, artPrice, totalPrice);
+            }
+            else
+            {
+                //Found     : Edit
+                DataRow row = dtOrder.Select($"oddArticleNr = {artNr}").FirstOrDefault();
+
+                row["oddAmount"] = Convert.ToInt32(row["oddAmount"]) + 1;
+                row["oddTotalPrice"] = artPrice * Convert.ToInt32(row["oddAmount"]);
+            }
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -65,7 +104,7 @@ namespace Order
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-
+            GetGridAsst();
         }
 
         private void cboCategory_TextChanged(object sender, EventArgs e)
@@ -113,6 +152,30 @@ namespace Order
             {
                 MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void GetGridOrder()
+        {
+            dtOrder.Columns.Add("oddOrderNr", typeof(string));
+            dtOrder.Columns.Add("oddCategory", typeof(string));
+            dtOrder.Columns.Add("oddSubCategory", typeof(string));
+            dtOrder.Columns.Add("oddArticleNr", typeof(string));
+            dtOrder.Columns.Add("oddArticleDesc", typeof(string));
+            dtOrder.Columns.Add("oddAmount", typeof(int));
+            dtOrder.Columns.Add("oddArticlePrice", typeof(double));
+            dtOrder.Columns.Add("oddTotalPrice", typeof(double));
+
+            if (edit)
+            {
+                //Get dt all orderdetails via string ordernr
+                DataTable dt = new DataTable();
+            }
+        }
+
+        public void CreateOrderNumber()
+        {
+            //Get dt all ordernumbers, and add 1 to last number
+            DataTable dt = new DataTable();
         }
         #endregion
     }

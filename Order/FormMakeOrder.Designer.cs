@@ -47,6 +47,12 @@
             this.lblCategory = new System.Windows.Forms.Label();
             this.cboCategory = new System.Windows.Forms.ComboBox();
             this.dgvAssortiment = new System.Windows.Forms.DataGridView();
+            this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ArticleNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ArticleDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvOrder = new System.Windows.Forms.DataGridView();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
@@ -58,12 +64,13 @@
             this.pnlFilterAsst = new System.Windows.Forms.Panel();
             this.lblOrder = new System.Windows.Forms.Label();
             this.txtOrder = new System.Windows.Forms.TextBox();
-            this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ArticleNr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ArticleDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubCategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.artNr_Order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.artDesc_Order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.artPrice_Order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cat_Order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subCat_Order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.amount_Order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalPrice_Order = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssortiment)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).BeginInit();
             this.pnlFilterAsst.SuspendLayout();
@@ -105,12 +112,71 @@
             this.dgvAssortiment.Size = new System.Drawing.Size(625, 601);
             this.dgvAssortiment.TabIndex = 2;
             // 
+            // Index
+            // 
+            this.Index.DataPropertyName = "asstIndex";
+            this.Index.HeaderText = "Index";
+            this.Index.Name = "Index";
+            this.Index.ReadOnly = true;
+            this.Index.Visible = false;
+            // 
+            // ArticleNr
+            // 
+            this.ArticleNr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ArticleNr.DataPropertyName = "asstArticleNumber";
+            this.ArticleNr.HeaderText = "Article Number";
+            this.ArticleNr.Name = "ArticleNr";
+            this.ArticleNr.ReadOnly = true;
+            // 
+            // ArticleDesc
+            // 
+            this.ArticleDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ArticleDesc.DataPropertyName = "asstArticleDescription";
+            this.ArticleDesc.HeaderText = "Article Description";
+            this.ArticleDesc.Name = "ArticleDesc";
+            this.ArticleDesc.ReadOnly = true;
+            // 
+            // Category
+            // 
+            this.Category.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Category.DataPropertyName = "asstCategory";
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            // 
+            // SubCategory
+            // 
+            this.SubCategory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SubCategory.DataPropertyName = "asstSubCategory";
+            this.SubCategory.HeaderText = "Sub Category";
+            this.SubCategory.Name = "SubCategory";
+            this.SubCategory.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Price.DataPropertyName = "asstPrice";
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
             // dgvOrder
             // 
             this.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.artNr_Order,
+            this.artDesc_Order,
+            this.artPrice_Order,
+            this.cat_Order,
+            this.subCat_Order,
+            this.amount_Order,
+            this.totalPrice_Order});
             this.dgvOrder.Location = new System.Drawing.Point(756, 74);
+            this.dgvOrder.MultiSelect = false;
             this.dgvOrder.Name = "dgvOrder";
-            this.dgvOrder.Size = new System.Drawing.Size(625, 601);
+            this.dgvOrder.ReadOnly = true;
+            this.dgvOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvOrder.Size = new System.Drawing.Size(761, 601);
             this.dgvOrder.TabIndex = 3;
             // 
             // btnAdd
@@ -137,7 +203,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(1306, 12);
+            this.btnClose.Location = new System.Drawing.Point(1442, 12);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 6;
@@ -147,7 +213,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(1306, 681);
+            this.btnSave.Location = new System.Drawing.Point(1442, 681);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 7;
@@ -210,59 +276,53 @@
             this.txtOrder.Size = new System.Drawing.Size(143, 20);
             this.txtOrder.TabIndex = 13;
             // 
-            // Index
+            // artNr_Order
             // 
-            this.Index.DataPropertyName = "asstIndex";
-            this.Index.HeaderText = "Index";
-            this.Index.Name = "Index";
-            this.Index.ReadOnly = true;
-            this.Index.Visible = false;
+            this.artNr_Order.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.artNr_Order.HeaderText = "Article Number";
+            this.artNr_Order.Name = "artNr_Order";
             // 
-            // ArticleNr
+            // artDesc_Order
             // 
-            this.ArticleNr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ArticleNr.DataPropertyName = "asstArticleNumber";
-            this.ArticleNr.HeaderText = "Article Number";
-            this.ArticleNr.Name = "ArticleNr";
-            this.ArticleNr.ReadOnly = true;
+            this.artDesc_Order.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.artDesc_Order.HeaderText = "Article Description";
+            this.artDesc_Order.Name = "artDesc_Order";
             // 
-            // ArticleDesc
+            // artPrice_Order
             // 
-            this.ArticleDesc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ArticleDesc.DataPropertyName = "asstArticleDescription";
-            this.ArticleDesc.HeaderText = "Article Description";
-            this.ArticleDesc.Name = "ArticleDesc";
-            this.ArticleDesc.ReadOnly = true;
+            this.artPrice_Order.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.artPrice_Order.HeaderText = "Article Price";
+            this.artPrice_Order.Name = "artPrice_Order";
             // 
-            // Category
+            // cat_Order
             // 
-            this.Category.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Category.DataPropertyName = "asstCategory";
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
+            this.cat_Order.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cat_Order.HeaderText = "Category";
+            this.cat_Order.Name = "cat_Order";
             // 
-            // SubCategory
+            // subCat_Order
             // 
-            this.SubCategory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SubCategory.DataPropertyName = "asstSubCategory";
-            this.SubCategory.HeaderText = "Sub Category";
-            this.SubCategory.Name = "SubCategory";
-            this.SubCategory.ReadOnly = true;
+            this.subCat_Order.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.subCat_Order.HeaderText = "Sub Category";
+            this.subCat_Order.Name = "subCat_Order";
             // 
-            // Price
+            // amount_Order
             // 
-            this.Price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Price.DataPropertyName = "asstPrice";
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
+            this.amount_Order.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.amount_Order.HeaderText = "Amount";
+            this.amount_Order.Name = "amount_Order";
+            // 
+            // totalPrice_Order
+            // 
+            this.totalPrice_Order.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.totalPrice_Order.HeaderText = "Total";
+            this.totalPrice_Order.Name = "totalPrice_Order";
             // 
             // FormMakeOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1393, 716);
+            this.ClientSize = new System.Drawing.Size(1529, 716);
             this.Controls.Add(this.txtOrder);
             this.Controls.Add(this.lblOrder);
             this.Controls.Add(this.pnlFilterAsst);
@@ -274,7 +334,7 @@
             this.Controls.Add(this.dgvAssortiment);
             this.Name = "FormMakeOrder";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormMakeOrder";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.FormMakeOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAssortiment)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrder)).EndInit();
@@ -307,5 +367,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
         private System.Windows.Forms.DataGridViewTextBoxColumn SubCategory;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn artNr_Order;
+        private System.Windows.Forms.DataGridViewTextBoxColumn artDesc_Order;
+        private System.Windows.Forms.DataGridViewTextBoxColumn artPrice_Order;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cat_Order;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subCat_Order;
+        private System.Windows.Forms.DataGridViewTextBoxColumn amount_Order;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalPrice_Order;
     }
 }
